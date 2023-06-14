@@ -1,0 +1,19 @@
+version: '3'
+services:
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    restart: always
+
+    ports:
+      # HTTP
+      - 9292:9292
+    environment:
+      NIFI_WEB_HTTP_PORT: 9292
+
+    networks:
+      - backend
+networks:
+  backend:
+    external:
+      name: proxy
